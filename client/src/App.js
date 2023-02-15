@@ -14,7 +14,7 @@ function App() {
         <div className="chat-log">
           <div className="chat-message">
             <div className="avatar">
-              Me
+              
             </div>
             <div className="message">
               Hello World
