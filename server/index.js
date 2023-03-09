@@ -15,9 +15,8 @@
 
 const { Configuration, OpenAIApi } = require("openai");
 
-console.log(`process.env.OPENAI_API_KEY:: ${ process.env.OPENAI_API_KEY }`);
 const configuration = new Configuration({
-    organization: "org-PTouXMFMu8BDIEFSbraMIb0c",
+    organization: "org-sWRf3X89saV0NvJfUgyZhUEZ",
     apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
@@ -33,8 +32,8 @@ const response = await openai.createCompletion({
   temperature: 0,
 });
 */
-/*
-(async () => {
+
+async function callApi() {
   const response = await openai.createCompletion({
     model: 'text-davinci-003',
     prompt: "Say this is a test",
@@ -42,5 +41,7 @@ const response = await openai.createCompletion({
     temperature: 0,
   });
   console.log(response.data.choices[0].text);
-})();
-*/
+}
+
+callApi();
+
