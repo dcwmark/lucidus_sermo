@@ -10,6 +10,8 @@
 
  require('dotenv').config();
 
+ const express = require('express');
+
 // Copied from https://platform.openai.com/docs/api-reference/authentication
 // OpenAI Documentation > API Reference > Authentication
 
@@ -41,7 +43,29 @@ async function callApi() {
     temperature: 0,
   });
   console.log(response.data.choices[0].text);
-}
+};
 
-callApi();
+// create a simple express api that calls the functio above.
 
+const app = express();
+const port = process.env.PORT;
+
+app.post('/', async (req, res) => {
+  const { message } = req.body;
+
+  // const response = await openai.createCompletion({
+  //   model: 'text-davinci-003',
+  //   prompt: "Say this is a test",
+  //   max_tokens: 7,
+  //   temperature: 0,
+  // });
+
+  console.log(response.data.choices[0].text);
+  res.json({
+    data: message,
+  });
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${ port }`);
+});
