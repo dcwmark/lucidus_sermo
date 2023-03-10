@@ -11,6 +11,8 @@
  require('dotenv').config();
 
  const express = require('express');
+ const bodyParser = require('body-parser');
+ const cors = require('cors');
 
 // Copied from https://platform.openai.com/docs/api-reference/authentication
 // OpenAI Documentation > API Reference > Authentication
@@ -48,10 +50,14 @@ async function callApi() {
 // create a simple express api that calls the functio above.
 
 const app = express();
+app.use(bodyParser.json());
+app.use(cors());
+
 const port = process.env.PORT;
 
 app.post('/', async (req, res) => {
   const { message } = req.body;
+  console.log(message);
 
   // const response = await openai.createCompletion({
   //   model: 'text-davinci-003',
@@ -59,8 +65,8 @@ app.post('/', async (req, res) => {
   //   max_tokens: 7,
   //   temperature: 0,
   // });
+  // console.log(response.data.choices[0].text);
 
-  console.log(response.data.choices[0].text);
   res.json({
     data: message,
   });

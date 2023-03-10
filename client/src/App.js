@@ -24,7 +24,7 @@ function App() {
     // fetch response to the api and
     // sending to localhost:5000 as a post
     const response = await fetch(
-      'http://localhost:3000', {
+      'http://localhost:5000', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', 
